@@ -86,8 +86,7 @@ public class K8sContainerResolver {
     io.fabric8.kubernetes.api.model.Handler postStart = toK8sHandler(lifecycle.getPostStart());
     io.fabric8.kubernetes.api.model.Handler preStop = toK8sHandler(lifecycle.getPreStop());
     io.fabric8.kubernetes.api.model.Lifecycle k8sLifecycle =
-        new io.fabric8.kubernetes.api.model.Lifecycle(
-            postStart, preStop);
+        new io.fabric8.kubernetes.api.model.Lifecycle(postStart, preStop);
     return k8sLifecycle;
   }
 
@@ -99,7 +98,7 @@ public class K8sContainerResolver {
     if (exec == null) {
       return null;
     }
-    //TODO: add 'httpGetAction' and 'tcpSocketAction' support
+    // TODO: add 'httpGetAction' and 'tcpSocketAction' support
     io.fabric8.kubernetes.api.model.Handler k8SHandler =
         new io.fabric8.kubernetes.api.model.Handler(exec, null, null);
     return k8SHandler;

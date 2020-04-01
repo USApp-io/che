@@ -42,6 +42,20 @@ export class OcpLoginPage {
         await this.driverHelper.waitAndClick(loginProviderTitleLocator);
     }
 
+    async isIdentityProviderLinkVisible(): Promise<boolean> {
+        Logger.debug('OcpLoginPage.isIdentityProviderLinkVisible');
+
+        const loginWithHtpaswdLocator: By = By.css(`a[title=\'Log in with ${TestConstants.TS_OCP_LOGIN_PAGE_PROVIDER_TITLE}\']`);
+        return await this.driverHelper.waitVisibilityBoolean(loginWithHtpaswdLocator, 3, 5000);
+    }
+
+    async isAuthorizeOpenShiftIdentityProviderPageVisible(): Promise<boolean> {
+        Logger.debug('OcpLoginPage.isAuthorizeOpenShiftIdentityProviderPageVisible');
+
+        const authorizeOpenshiftIdentityProviderPageLocator: By = By.xpath('//h1[text()=\'Authorize Access\']');
+        return await this.driverHelper.isVisible(authorizeOpenshiftIdentityProviderPageLocator);
+    }
+
     async waitAuthorizeOpenShiftIdentityProviderPage() {
         Logger.debug('OcpLoginPage.waitAuthorizeOpenShiftIdentityProviderPage');
 
